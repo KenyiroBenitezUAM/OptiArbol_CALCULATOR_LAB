@@ -681,8 +681,8 @@
             const container = document.getElementById('tree-container');
             container.innerHTML = '';
             
-            const width = 800; // Increased width for 6x6 matrix
-            const height = 600; // Increased height for 6 options
+            const width = 800;
+            const height = 600;
             
             const svg = d3.select('#tree-container')
                 .append('svg')
@@ -694,7 +694,7 @@
             const startX = 80;
             const startY = height / 2;
             const optionX = 250;
-            const outcomeX = 500; // Adjusted for more space
+            const outcomeX = 500;
             
             // Draw start node as diamond
             svg.append('polygon')
@@ -707,8 +707,16 @@
                 .attr('class', 'node-text')
                 .text('Inicio');
             
+            // Add optimal expected value below "Inicio"
+            svg.append('text')
+                .attr('x', startX)
+                .attr('y', startY + 20)
+                .attr('class', 'node-text')
+                .style('font-size', '8px')
+                .text(`VE Óptimo: ${results.maxExpectedValue.toFixed(2)}`);
+            
             results.expectedValues.forEach((value, i) => {
-                const optionY = 80 + i * 80; // Adjusted spacing for 6 options
+                const optionY = 80 + i * 80;
                 const isOptimal = i === results.expectedValueIndex;
                 
                 // Option node
@@ -753,19 +761,19 @@
                 
                 // Outcome nodes
                 results.matrix[i].forEach((returnValue, j) => {
-                    const outcomeY = optionY - 50 + j * 18; // Adjusted spacing for 6 scenarios
+                    const outcomeY = optionY - 50 + j * 18;
                     
                     svg.append('circle')
                         .attr('cx', outcomeX)
                         .attr('cy', outcomeY)
-                        .attr('r', 10) // Smaller radius for more scenarios
+                        .attr('r', 10)
                         .attr('class', 'outcome-node');
                     
                     svg.append('text')
                         .attr('x', outcomeX)
                         .attr('y', outcomeY)
                         .attr('class', 'outcome-text')
-                        .style('font-size', '7px') // Smaller font for readability
+                        .style('font-size', '7px')
                         .text(returnValue.toFixed(1));
                     
                     svg.append('line')
@@ -780,7 +788,7 @@
                         .attr('x', (optionX + outcomeX) / 2)
                         .attr('y', (optionY + outcomeY) / 2 - 5)
                         .attr('class', 'link-text')
-                        .style('font-size', '8px') // Smaller font for readability
+                        .style('font-size', '8px')
                         .text(`p=${results.probabilities[j].toFixed(3)}`);
                 });
             });
