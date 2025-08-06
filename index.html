@@ -6,6 +6,7 @@
     <title>Calculadora de Valores Esperados - Árbol de Decisiones</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=The+Seasons:wght@400;700&display=swap');
@@ -373,7 +374,7 @@
     <!-- Section 5: Calculator -->
     <section class="min-h-screen py-20">
         <div class="max-w-6xl mx-auto px-6">
-            <!-- océano -->
+            <!-- Title -->
             <div class="text-center mb-12">
                 <h1 class="text-4xl font-bold text-gray-900 mb-4" style="font-weight: 700; letter-spacing: -0.02em;">Calculadora de Valores Esperados</h1>
                 <p class="text-xl text-gray-700" style="font-weight: 400;">Árbol de Decisiones Interactivo</p>
@@ -420,6 +421,9 @@
                     <div id="tree-container" class="w-full h-96 border border-gray-200 rounded-lg flex items-center justify-center text-gray-500">
                         <p>Ingrese los datos y haga clic en "Calcular" para generar el árbol</p>
                     </div>
+                    <button id="download-btn" class="w-full apple-button py-3 px-4 text-base mt-4 hidden">
+                        Descargar Árbol como PNG
+                    </button>
                 </div>
             </div>
 
@@ -551,7 +555,7 @@
             const container = document.getElementById('tree-container');
             container.innerHTML = '';
             
-            const width = container.clientWidth;
+            const width = 500;
             const height = 400;
             
             const svg = d3.select('#tree-container')
@@ -640,14 +644,42 @@
                         .attr('y2', outcomeY)
                         .attr('class', 'link')
                         .style('stroke-width', 1);
+                    
+                    // Probability label for outcome
+                    svg.append('text')
+                        .attr('x', (optionX + outcomeX) / 2)
+                        .attr('y', (optionY + outcomeY) / 2 - 5)
+                        .attr('class', 'link-text')
+                        .style('font-size', '9px')
+                        .text(`p=${results.probabilities[j].toFixed(3)}`);
                 });
                 
-                // Probability label
+                // Probability label for option
                 svg.append('text')
                     .attr('x', (startX + optionX) / 2)
                     .attr('y', (startY + optionY) / 2 - 5)
                     .attr('class', 'link-text')
                     .text(`p=${results.probabilities[i].toFixed(3)}`);
+            });
+
+            // Show download button after tree is generated
+            document.getElementById('download-btn').classList.remove('hidden');
+        }
+
+        // Download tree as PNG
+        function downloadTreeAsPNG() {
+            const container = document.getElementById('tree-container');
+            html2canvas(container, { 
+                backgroundColor: '#ffffff',
+                scale: 2 // Increase resolution for better quality
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'decision_tree.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            }).catch(error => {
+                console.error('Error generating PNG:', error);
+                alert('Error al generar la imagen. Por favor, intenta de nuevo.');
             });
         }
 
@@ -659,11 +691,14 @@
             });
         }
         
+        // Event listeners
         document.getElementById('calculate-btn').addEventListener('click', function() {
             const results = calculateExpectedValues();
             displayResults(results);
             generateTree(results);
         });
+
+        document.getElementById('download-btn').addEventListener('click', downloadTreeAsPNG);
 
         // Initialize the interface
         initializeInputs();
@@ -689,5 +724,5 @@
         // Load sample data on page load
         loadSampleData();
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96ac4dcc82c08c3d',t:'MTc1NDQ1OTkyMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</body>
 </html>
