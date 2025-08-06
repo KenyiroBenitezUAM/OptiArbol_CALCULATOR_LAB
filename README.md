@@ -11,27 +11,6 @@
 - **Datos de Ejemplo**: Carga datos de muestra predefinidos para facilitar la demostración y el aprendizaje.
 - **Estilo Inspirado en Apple**: Interfaz elegante con transiciones suaves, sombras y efectos de desenfoque para una experiencia visual premium.
 
-## Tecnologías Utilizadas
-
-- **HTML5**: Estructura de la aplicación.
-- **CSS3**: Estilos personalizados para la interfaz.
-- **JavaScript**: Lógica para cálculos y visualización interactiva.
-- **Tailwind CSS**: Framework CSS para un diseño moderno y responsivo.
-- **D3.js**: Biblioteca para la generación del árbol de decisiones visual.
-- **Google Fonts**: Fuentes personalizadas (*The Seasons*, *Inter*, *SF Pro*) para una estética profesional.
-
-## Instalación
-
-1. Clona el repositorio:
-   ```bash
-   git clone https://github.com/usuario/optiarbol-calculator-lab.git
-   ```
-2. Navega al directorio del proyecto:
-   ```bash
-   cd optiarbol-calculator-lab
-   ```
-3. Abre el archivo `index.html` en un navegador web. No se requieren dependencias adicionales, ya que Tailwind CSS y D3.js se cargan mediante CDN.
-
 ## Uso
 
 1. **Ingresar Datos**:
