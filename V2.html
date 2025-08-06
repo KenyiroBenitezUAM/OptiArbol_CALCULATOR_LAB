@@ -93,7 +93,7 @@
         
         .node-text {
             fill: white;
-            font-size: 12px;
+            font-size: 10px;
             font-weight: 600;
             text-anchor: middle;
             dominant-baseline: middle;
@@ -109,7 +109,7 @@
         
         .link-text {
             fill: #3A3A3C;
-            font-size: 11px;
+            font-size: 9px;
             text-anchor: middle;
             font-weight: 500;
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
@@ -180,10 +180,9 @@
                     <h2 class="text-xl font-bold text-gray-900 mb-6" style="font-weight: 700; letter-spacing: -0.01em;">Proyecto Final: Calculadora de Valores Esperados con Árbol de Decisiones Gráfico</h2>
                     <div class="text-sm text-gray-800 space-y-2" style="font-weight: 400;">
                         <p><strong style="font-weight: 600;">Presentado por:</strong></p>
-                        <p>Benítez Pérez Adán Kenyiro, Mayte Martínez Mendoza,</p>
-                        <p>Daniela Altamirano Medina, Adán Kenyiro Benítez Pérez y Nayeli López Miranda</p>
+                        <p>Benítez Pérez, Martínez Mendoza, Altamirano Medina, López Miranda</p>
                         <div class="mt-6 space-y-2">
-                            <p><strong style="font-weight: 600;">Profesor:</strong> Dr. David Guerrero Sánchez</p>
+                            <p><strong style="font-weight: 600;">Profesor:</strong> Dr. Guerrero Sánchez</p>
                             <p><strong style="font-weight: 600;">Grupo:</strong> S02G</p>
                             <p><strong style="font-weight: 600;">Fecha:</strong> 10 de Junio de 2025</p>
                             <p><strong style="font-weight: 600;">Ciudad de México, México</strong></p>
@@ -201,7 +200,7 @@
                 <h2 class="text-2xl font-bold text-gray-900 mb-6" style="font-weight: 700; letter-spacing: -0.02em;">Árbol de Decisiones y Análisis de Rendimiento</h2>
                 <div class="text-left text-gray-700 leading-relaxed mb-6">
                     <p class="mb-4">
-                        <strong>Descripción:</strong> Esta aplicación permite tomar decisiones óptimas al calcular el rendimiento esperado y aplicar criterios de decisión como Maximax, Maximin, Laplace y Minimax, además del valor esperado. El usuario ingresa una matriz 4×4 de rendimientos y un vector de probabilidades. El sistema calcula los resultados para cada criterio y genera un árbol de decisiones visual, destacando las opciones óptimas.
+                        <strong>Descripción:</strong> Esta aplicación permite tomar decisiones óptimas al calcular el rendimiento esperado, el valor esperado de la información perfecta (EVPI) y aplicar criterios de decisión como Maximax, Maximin, Laplace y Minimax. El usuario ingresa una matriz 6×6 de rendimientos y un vector de probabilidades. El sistema calcula los resultados para cada criterio y genera un árbol de decisiones visual, destacando la opción óptima basada en el valor esperado.
                     </p>
                 </div>
                 <div class="space-y-4">
@@ -210,31 +209,35 @@
                         <div class="mt-3 text-sm text-gray-700 space-y-3">
                             <div>
                                 <h4 class="font-medium text-gray-800">1. Multiplicación de Matriz por Vector (Valor Esperado)</h4>
-                                <p>La matriz M de 4×4 representa los rendimientos de cuatro opciones bajo cuatro escenarios. El vector de probabilidades P = [p₁, p₂, p₃, p₄] debe cumplir que la suma de sus elementos sea 1. El rendimiento esperado de cada opción se calcula sumando el producto de cada rendimiento por su probabilidad correspondiente. Los resultados se redondean a tres decimales.</p>
+                                <p>La matriz M de 6×6 representa los rendimientos de seis opciones bajo seis escenarios. El vector de probabilidades P = [p₁, p₂, p₃, p₄, p₅, p₆] debe cumplir que la suma de sus elementos sea 1. El rendimiento esperado de cada opción se calcula sumando el producto de cada rendimiento por su probabilidad correspondiente. Los resultados se redondean a tres decimales.</p>
                             </div>
                             <div>
-                                <h4 class="font-medium text-gray-800">2. Criterio Maximax</h4>
+                                <h4 class="font-medium text-gray-800">2. Valor Esperado de la Información Perfecta (EVPI)</h4>
+                                <p>El EVPI se calcula como la diferencia entre el Valor Esperado con Información Perfecta (EVwPI), que suma los máximos rendimientos por escenario ponderados por sus probabilidades, y el Valor Esperado sin Información Perfecta (EVwoPI), que es el máximo valor esperado de las opciones.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800">3. Criterio Maximax</h4>
                                 <p>Selecciona la opción con el mayor rendimiento posible en cualquier escenario, optimista pero arriesgada.</p>
                             </div>
                             <div>
-                                <h4 class="font-medium text-gray-800">3. Criterio Maximin</h4>
+                                <h4 class="font-medium text-gray-800">4. Criterio Maximin</h4>
                                 <p>Elige la opción con el mejor rendimiento en el peor escenario, siendo conservadora.</p>
                             </div>
                             <div>
-                                <h4 class="font-medium text-gray-800">4. Criterio Laplace</h4>
-                                <p>Asume probabilidades iguales (0.25) para cada escenario y calcula el valor esperado, seleccionando la opción con el mayor resultado.</p>
+                                <h4 class="font-medium text-gray-800">5. Criterio Laplace</h4>
+                                <p>Asume probabilidades iguales (0.1667) para cada escenario y calcula el valor esperado, seleccionando la opción con el mayor resultado.</p>
                             </div>
                             <div>
-                                <h4 class="font-medium text-gray-800">5. Criterio Minimax</h4>
+                                <h4 class="font-medium text-gray-800">6. Criterio Minimax</h4>
                                 <p>Construye una matriz de arrepentimiento (diferencia entre el máximo rendimiento por escenario y el rendimiento real) y selecciona la opción que minimiza el arrepentimiento máximo.</p>
                             </div>
                             <div>
-                                <h4 class="font-medium text-gray-800">6. Normalización del Vector de Probabilidades</h4>
+                                <h4 class="font-medium text-gray-800">7. Normalización del Vector de Probabilidades</h4>
                                 <p>Si la suma de probabilidades no es exactamente 1, el sistema las normaliza automáticamente para asegurar cálculos válidos.</p>
                             </div>
                             <div>
-                                <h4 class="font-medium text-gray-800">7. Visualización del Árbol de Decisiones</h4>
-                                <p>El árbol incluye un nodo inicial de decisión, cuatro nodos de opciones conectados con sus probabilidades, ramificaciones a cuatro escenarios con los valores de rendimiento correspondientes. Las opciones óptimas por cada criterio se resaltan en el árbol.</p>
+                                <h4 class="font-medium text-gray-800">8. Visualización del Árbol de Decisiones</h4>
+                                <p>El árbol incluye un nodo inicial de decisión (rombo), seis nodos de opciones conectados con sus probabilidades, ramificaciones a seis escenarios con los valores de rendimiento correspondientes. La opción con el mayor valor esperado se resalta en verde.</p>
                             </div>
                         </div>
                     </details>
@@ -284,7 +287,7 @@
                     <details class="bg-gray-50/50 rounded-xl p-6 apple-section border border-gray-100/50">
                         <summary class="font-semibold text-gray-900 cursor-pointer hover:text-gray-800 transition-colors" style="font-weight: 600; letter-spacing: -0.01em;">Conclusión</summary>
                         <div class="mt-3 text-sm text-gray-700">
-                            <p>Este programa combina cálculos matemáticos avanzados con visualización clara para apoyar la toma de decisiones fundamentadas. Incorpora criterios como Maximax, Maximin, Laplace, Minimax y Valor Esperado, inspirándose en avances en algoritmos de árboles de decisión, ofreciendo una herramienta accesible y precisa.</p>
+                            <p>Este programa combina cálculos matemáticos avanzados, incluyendo el EVPI, con visualización clara para apoyar la toma de decisiones fundamentadas. Incorpora criterios como Maximax, Maximin, Laplace, Minimax y Valor Esperado, inspirándose en avances en algoritmos de árboles de decisión, ofreciendo una herramienta accesible y precisa.</p>
                         </div>
                     </details>
                 </div>
@@ -309,7 +312,7 @@
             </h1>
             <p class="text-xl md:text-2xl text-gray-700 mb-12 leading-relaxed" style="font-weight: 400; letter-spacing: -0.01em;">
                 Herramienta interactiva para análisis de decisiones<br>
-                con múltiples criterios y visualización de árboles
+                con visualización de árboles y criterios múltiples
             </p>
             <div class="grid md:grid-cols-3 gap-8 mb-16">
                 <div class="apple-card rounded-2xl p-8 apple-section">
@@ -319,7 +322,7 @@
                         </svg>
                     </div>
                     <h3 class="text-xl font-semibold text-gray-900 mb-3" style="font-weight: 600; letter-spacing: -0.01em;">Cálculo Avanzado</h3>
-                    <p class="text-gray-700 text-base" style="font-weight: 400;">Soporte para Maximax, Maximin, Laplace, Minimax y Valor Esperado</p>
+                    <p class="text-gray-700 text-base" style="font-weight: 400;">Soporte para Maximax, Maximin, Laplace, Minimax, Valor Esperado y EVPI</p>
                 </div>
                 <div class="apple-card rounded-2xl p-8 apple-section">
                     <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mb-6 mx-auto">
@@ -328,7 +331,7 @@
                         </svg>
                     </div>
                     <h3 class="text-xl font-semibold text-gray-900 mb-3" style="font-weight: 600; letter-spacing: -0.01em;">Visualización</h3>
-                    <p class="text-gray-700 text-base" style="font-weight: 400;">Árbol interactivo con opciones óptimas resaltadas por criterio</p>
+                    <p class="text-gray-700 text-base" style="font-weight: 400;">Árbol interactivo con la opción óptima (Valor Esperado) resaltada</p>
                 </div>
                 <div class="apple-card rounded-2xl p-8 apple-section">
                     <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mb-6 mx-auto">
@@ -339,10 +342,6 @@
                     <h3 class="text-xl font-semibold text-gray-900 mb-3" style="font-weight: 600; letter-spacing: -0.01em;">Responsivo</h3>
                     <p class="text-gray-700 text-base" style="font-weight: 400;">Diseño adaptable para Google Colab en dispositivos móviles y escritorio</p>
                 </div>
-            </div>
-            <div class="mt-16 text-base text-gray-600" style="font-weight: 400;">
-                <p>Desarrollado para Google Colab • Universidad Autónoma Metropolitana Xochimilco</p>
-                <p class="mt-2">Política y Gestión Social • Análisis de Decisiones Avanzado</p>
             </div>
         </div>
     </section>
@@ -358,13 +357,13 @@
                 <div class="apple-card rounded-2xl p-8">
                     <h2 class="text-2xl font-semibold text-gray-900 mb-8" style="font-weight: 600; letter-spacing: -0.01em;">Datos de Entrada</h2>
                     <div class="mb-6">
-                        <label class="block text-sm font-medium text-gray-700 mb-3">Matriz de Rendimientos (4×4)</label>
-                        <div class="grid grid-cols-4 gap-2" id="matrix-inputs">
+                        <label class="block text-sm font-medium text-gray-700 mb-3">Matriz de Rendimientos (6×6)</label>
+                        <div class="grid grid-cols-6 gap-2" id="matrix-inputs">
                         </div>
                     </div>
                     <div class="mb-6">
                         <label class="block text-sm font-medium text-gray-700 mb-3">Vector de Probabilidades</label>
-                        <div class="grid grid-cols-4 gap-2" id="prob-inputs">
+                        <div class="grid grid-cols-6 gap-2" id="prob-inputs">
                         </div>
                         <p class="text-xs text-gray-500 mt-2">Las probabilidades se normalizarán automáticamente si no suman 1.0</p>
                     </div>
@@ -378,7 +377,7 @@
                 </div>
                 <div class="apple-card rounded-2xl p-8">
                     <h2 class="text-2xl font-semibold text-gray-900 mb-6" style="font-weight: 600; letter-spacing: -0.01em;">Árbol de Decisiones</h2>
-                    <div id="tree-container" class="w-full h-96 border border-gray-200 rounded-lg flex items-center justify-center text-gray-500">
+                    <div id="tree-container" class="w-full h-96 border border-gray-200 rounded-lg flex items-center justify-center text-gray-500 overflow-x-auto">
                         <p>Ingrese los datos y haga clic en "Calcular" para generar el árbol</p>
                     </div>
                     <button id="download-btn" class="w-full apple-button py-3 px-4 text-base mt-4 hidden">
@@ -399,20 +398,26 @@
                     </div>
                     <div>
                         <h4 class="font-medium text-gray-800 mb-2">Criterios de Decisión:</h4>
-                        <p>La calculadora evalúa Maximax, Maximin, Laplace, Minimax y Valor Esperado, mostrando la opción óptima para cada uno.</p>
+                        <p>La calculadora evalúa Maximax, Maximin, Laplace, Minimax, Valor Esperado y EVPI, destacando la opción óptima basada en el valor esperado en el árbol.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Footer Section -->
+    <div class="text-center text-base text-gray-600 py-8" style="font-weight: 400;">
+        <p>Desarrollado para Google Colab • Universidad Autónoma Metropolitana Xochimilco</p>
+        <p class="mt-2">Política y Gestión Social • Análisis de Decisiones Avanzado</p>
+    </div>
+
     <script>
-        // Initialize input fields
+        // Initialize input fields for 6x6 matrix
         function initializeInputs() {
             const matrixContainer = document.getElementById('matrix-inputs');
             const probContainer = document.getElementById('prob-inputs');
             
-            for (let i = 0; i < 16; i++) {
+            for (let i = 0; i < 36; i++) {
                 const input = document.createElement('input');
                 input.type = 'number';
                 input.step = '0.001';
@@ -422,11 +427,11 @@
                 matrixContainer.appendChild(input);
             }
             
-            for (let i = 0; i < 4; i++) {
+            for (let i = 0; i < 6; i++) {
                 const input = document.createElement('input');
                 input.type = 'number';
                 input.step = '0.001';
-                input.value = '0.25';
+                input.value = '0.1667';
                 input.className = 'w-full px-2 py-2 apple-input text-sm';
                 input.id = `prob-${i}`;
                 probContainer.appendChild(input);
@@ -435,12 +440,12 @@
 
         // Calculate decision criteria
         function calculateDecisionCriteria() {
-            // Get matrix values
+            // Get matrix values (6x6)
             const matrix = [];
-            for (let i = 0; i < 4; i++) {
+            for (let i = 0; i < 6; i++) {
                 const row = [];
-                for (let j = 0; j < 4; j++) {
-                    const value = parseFloat(document.getElementById(`matrix-${i * 4 + j}`).value) || 0;
+                for (let j = 0; j < 6; j++) {
+                    const value = parseFloat(document.getElementById(`matrix-${i * 6 + j}`).value) || 0;
                     row.push(value);
                 }
                 matrix.push(row);
@@ -448,7 +453,7 @@
             
             // Get probability values
             let probabilities = [];
-            for (let i = 0; i < 4; i++) {
+            for (let i = 0; i < 6; i++) {
                 const value = parseFloat(document.getElementById(`prob-${i}`).value) || 0;
                 probabilities.push(value);
             }
@@ -458,7 +463,7 @@
             if (sum > 0) {
                 probabilities = probabilities.map(p => p / sum);
             } else {
-                probabilities = [0.25, 0.25, 0.25, 0.25]; // Default to equal probabilities if sum is 0
+                probabilities = [0.1667, 0.1667, 0.1667, 0.1667, 0.1667, 0.1667]; // Default to equal probabilities if sum is 0
             }
             
             // Expected Value
@@ -467,6 +472,11 @@
             });
             const maxExpectedValue = Math.max(...expectedValues);
             const expectedValueIndex = expectedValues.indexOf(maxExpectedValue);
+            
+            // EVPI Calculation
+            const maxPerScenario = matrix[0].map((_, colIndex) => Math.max(...matrix.map(row => row[colIndex])));
+            const evwpi = maxPerScenario.reduce((sum, value, index) => sum + value * probabilities[index], 0);
+            const evpi = evwpi - maxExpectedValue;
             
             // Maximax
             const maxPerOption = matrix.map(row => Math.max(...row));
@@ -479,13 +489,13 @@
             const maximinIndex = minPerOption.indexOf(maximinValue);
             
             // Laplace
-            const laplaceValues = matrix.map(row => row.reduce((sum, value) => sum + value * 0.25, 0));
+            const laplaceValues = matrix.map(row => row.reduce((sum, value) => sum + value * 0.1667, 0));
             const laplaceValue = Math.max(...laplaceValues);
             const laplaceIndex = laplaceValues.indexOf(laplaceValue);
             
             // Minimax (Regret)
-            const maxPerScenario = matrix[0].map((_, colIndex) => Math.max(...matrix.map(row => row[colIndex])));
-            const regretMatrix = matrix.map(row => row.map((value, colIndex) => maxPerScenario[colIndex] - value));
+            const maxPerScenarioRegret = matrix[0].map((_, colIndex) => Math.max(...matrix.map(row => row[colIndex])));
+            const regretMatrix = matrix.map(row => row.map((value, colIndex) => maxPerScenarioRegret[colIndex] - value));
             const maxRegretPerOption = regretMatrix.map(row => Math.max(...row));
             const minimaxValue = Math.min(...maxRegretPerOption);
             const minimaxIndex = maxRegretPerOption.indexOf(minimaxValue);
@@ -496,6 +506,8 @@
                 expectedValues,
                 expectedValueIndex,
                 maxExpectedValue,
+                evwpi,
+                evpi,
                 maximaxIndex,
                 maximaxValue,
                 maximinIndex,
@@ -536,6 +548,21 @@
                     <span class="font-medium text-green-800">
                         Opción Óptima: ${results.expectedValueIndex + 1} (VE: ${results.maxExpectedValue.toFixed(3)})
                     </span>
+                </div>
+            `;
+            
+            // EVPI Results
+            const evpiDiv = document.createElement('div');
+            evpiDiv.className = 'space-y-2';
+            evpiDiv.innerHTML = `
+                <h4 class="font-medium text-gray-800">Valor Esperado de la Información Perfecta (EVPI)</h4>
+                <div class="flex justify-between items-center py-2 px-3 rounded-md bg-gray-50">
+                    <span class="font-medium">EVwPI:</span>
+                    <span class="font-mono">${results.evwpi.toFixed(3)}</span>
+                </div>
+                <div class="flex justify-between items-center py-2 px-3 rounded-md bg-gray-50">
+                    <span class="font-medium">EVPI:</span>
+                    <span class="font-mono">${results.evpi.toFixed(3)}</span>
                 </div>
             `;
             
@@ -594,7 +621,7 @@
             laplaceDiv.className = 'space-y-2';
             laplaceDiv.innerHTML = `<h4 class="font-medium text-gray-800">Laplace</h4>`;
             results.matrix.forEach((row, index) => {
-                const laplaceValue = row.reduce((sum, value) => sum + value * 0.25, 0);
+                const laplaceValue = row.reduce((sum, value) => sum + value * 0.1667, 0);
                 const div = document.createElement('div');
                 div.className = `flex justify-between items-center py-2 px-3 rounded-md ${
                     index === results.laplaceIndex ? 'bg-purple-100 border border-purple-300' : 'bg-gray-50'
@@ -640,6 +667,7 @@
             `;
             
             criteriaDiv.appendChild(evDiv);
+            criteriaDiv.appendChild(evpiDiv);
             criteriaDiv.appendChild(maximaxDiv);
             criteriaDiv.appendChild(maximinDiv);
             criteriaDiv.appendChild(laplaceDiv);
@@ -653,23 +681,24 @@
             const container = document.getElementById('tree-container');
             container.innerHTML = '';
             
-            const width = 600;
-            const height = 400;
+            const width = 800;
+            const height = 600;
             
             const svg = d3.select('#tree-container')
                 .append('svg')
                 .attr('width', width)
-                .attr('height', height);
+                .attr('height', height)
+                .attr('viewBox', `0 0 ${width} ${height}`)
+                .attr('preserveAspectRatio', 'xMidYMid meet');
             
             const startX = 80;
             const startY = height / 2;
             const optionX = 250;
-            const outcomeX = 420;
+            const outcomeX = 500;
             
-            svg.append('circle')
-                .attr('cx', startX)
-                .attr('cy', startY)
-                .attr('r', 25)
+            // Draw start node as diamond
+            svg.append('polygon')
+                .attr('points', `${startX},${startY-25} ${startX+25},${startY} ${startX},${startY+25} ${startX-25},${startY}`)
                 .attr('class', 'start-node');
             
             svg.append('text')
@@ -678,23 +707,19 @@
                 .attr('class', 'node-text')
                 .text('Inicio');
             
+            // Add optimal expected value below "Inicio"
+            svg.append('text')
+                .attr('x', startX)
+                .attr('y', startY + 30)
+                .attr('class', 'node-text')
+                .style('font-size', '12px')
+                .style('font-weight', 'bold')
+                .style('fill', '#000000')
+                .text(`VE Óptimo: ${results.maxExpectedValue.toFixed(2)}`);
+            
             results.expectedValues.forEach((value, i) => {
                 const optionY = 80 + i * 80;
-                const isOptimalEV = i === results.expectedValueIndex;
-                const isOptimalMaximax = i === results.maximaxIndex;
-                const isOptimalMaximin = i === results.maximinIndex;
-                const isOptimalLaplace = i === results.laplaceIndex;
-                const isOptimalMinimax = i === results.minimaxIndex;
-                
-                // Determine node color based on criteria
-                let nodeClass = 'node-circle';
-                let criteriaLabels = [];
-                if (isOptimalEV) criteriaLabels.push('EV');
-                if (isOptimalMaximax) criteriaLabels.push('Maximax');
-                if (isOptimalMaximin) criteriaLabels.push('Maximin');
-                if (isOptimalLaplace) criteriaLabels.push('Laplace');
-                if (isOptimalMinimax) criteriaLabels.push('Minimax');
-                if (criteriaLabels.length > 0) nodeClass = 'node-optimal';
+                const isOptimal = i === results.expectedValueIndex;
                 
                 // Option node
                 svg.append('rect')
@@ -703,7 +728,7 @@
                     .attr('width', 80)
                     .attr('height', 40)
                     .attr('rx', 5)
-                    .attr('class', nodeClass);
+                    .attr('class', isOptimal ? 'node-optimal' : 'node-circle');
                 
                 svg.append('text')
                     .attr('x', optionX)
@@ -719,13 +744,13 @@
                     .style('font-size', '9px')
                     .text(`VE: ${value.toFixed(2)}`);
                 
-                if (criteriaLabels.length > 0) {
+                if (isOptimal) {
                     svg.append('text')
                         .attr('x', optionX)
                         .attr('y', optionY + 20)
                         .attr('class', 'node-text')
                         .style('font-size', '8px')
-                        .text(`[${criteriaLabels.join(', ')}]`);
+                        .text('[Óptima]');
                 }
                 
                 // Connection from start to option
@@ -738,25 +763,25 @@
                 
                 // Outcome nodes
                 results.matrix[i].forEach((returnValue, j) => {
-                    const outcomeY = optionY - 30 + j * 20;
+                    const outcomeY = optionY - 50 + j * 18;
                     
                     svg.append('circle')
                         .attr('cx', outcomeX)
                         .attr('cy', outcomeY)
-                        .attr('r', 12)
+                        .attr('r', 10)
                         .attr('class', 'outcome-node');
                     
                     svg.append('text')
                         .attr('x', outcomeX)
                         .attr('y', outcomeY)
                         .attr('class', 'outcome-text')
-                        .style('font-size', '8px')
+                        .style('font-size', '7px')
                         .text(returnValue.toFixed(1));
                     
                     svg.append('line')
                         .attr('x1', optionX + 40)
                         .attr('y1', optionY)
-                        .attr('x2', outcomeX - 12)
+                        .attr('x2', outcomeX - 10)
                         .attr('y2', outcomeY)
                         .attr('class', 'link')
                         .style('stroke-width', 1);
@@ -765,15 +790,9 @@
                         .attr('x', (optionX + outcomeX) / 2)
                         .attr('y', (optionY + outcomeY) / 2 - 5)
                         .attr('class', 'link-text')
-                        .style('font-size', '9px')
+                        .style('font-size', '8px')
                         .text(`p=${results.probabilities[j].toFixed(3)}`);
                 });
-                
-                svg.append('text')
-                    .attr('x', (startX + optionX) / 2)
-                    .attr('y', (startY + optionY) / 2 - 5)
-                    .attr('class', 'link-text')
-                    .text(`p=${results.probabilities[i].toFixed(3)}`);
             });
 
             document.getElementById('download-btn').classList.remove('hidden');
@@ -819,14 +838,16 @@
         // Load sample data
         function loadSampleData() {
             const sampleMatrix = [
-                [100, 80, 60, 40],
-                [90, 85, 70, 50],
-                [110, 75, 65, 35],
-                [95, 90, 75, 55]
+                [100, 80, 60, 40, 20, 10],
+                [90, 85, 70, 50, 30, 15],
+                [110, 75, 65, 35, 25, 5],
+                [95, 90, 75, 55, 45, 20],
+                [120, 100, 80, 60, 40, 30],
+                [85, 70, 55, 45, 35, 25]
             ];
-            for (let i = 0; i < 4; i++) {
-                for (let j = 0; j < 4; j++) {
-                    document.getElementById(`matrix-${i * 4 + j}`).value = sampleMatrix[i][j];
+            for (let i = 0; i < 6; i++) {
+                for (let j = 0; j < 6; j++) {
+                    document.getElementById(`matrix-${i * 6 + j}`).value = sampleMatrix[i][j];
                 }
             }
         }
